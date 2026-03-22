@@ -21,3 +21,4 @@
 /Users/sean/Documents/react/EventTicketingSystem/Domain/obj/Debug/net10.0/refint/Domain.dll
 /Users/sean/Documents/react/EventTicketingSystem/Domain/obj/Debug/net10.0/Domain.pdb
 /Users/sean/Documents/react/EventTicketingSystem/Domain/obj/Debug/net10.0/ref/Domain.dll
+/Users/sean/Documents/react/EventTicketingSystem/Domain/obj/Debug/net10.0/Domain.sourcelink.json

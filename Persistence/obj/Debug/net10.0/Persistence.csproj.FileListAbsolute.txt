@@ -29,3 +29,4 @@
 /Users/sean/Documents/react/EventTicketingSystem/Persistence/obj/Debug/net10.0/refint/Persistence.dll
 /Users/sean/Documents/react/EventTicketingSystem/Persistence/obj/Debug/net10.0/Persistence.pdb
 /Users/sean/Documents/react/EventTicketingSystem/Persistence/obj/Debug/net10.0/ref/Persistence.dll
+/Users/sean/Documents/react/EventTicketingSystem/Persistence/obj/Debug/net10.0/Persistence.sourcelink.json
