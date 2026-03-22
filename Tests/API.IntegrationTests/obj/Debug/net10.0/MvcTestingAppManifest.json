@@ -1,0 +1,6 @@
+{
+  "API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/sean\/Documents\/react\/EventTicketingSystem\/API",
+  "Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/sean\/Documents\/react\/EventTicketingSystem\/Application",
+  "Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/sean\/Documents\/react\/EventTicketingSystem\/Domain",
+  "Persistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/sean\/Documents\/react\/EventTicketingSystem\/Persistence"
+}

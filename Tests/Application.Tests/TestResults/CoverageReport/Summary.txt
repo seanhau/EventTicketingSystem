@@ -1,0 +1,60 @@
+Summary
+  Generated on: 3/22/2026 - 8:31:54 PM
+  Coverage date: 3/22/2026 - 8:31:35 PM
+  Parser: Cobertura
+  Assemblies: 3
+  Classes: 34
+  Files: 32
+  Line coverage: 43.7%
+  Covered lines: 538
+  Uncovered lines: 691
+  Coverable lines: 1229
+  Total lines: 1820
+  Branch coverage: 73.2% (41 of 56)
+  Covered branches: 41
+  Total branches: 56
+  Method coverage: 91.6% (131 of 143)
+  Full method coverage: 88.8% (127 of 143)
+  Covered methods: 131
+  Fully covered methods: 127
+  Total methods: 143
+
+Application                                                  95.5%
+  Application.Core.AppException                                 0%
+  Application.Core.MappingProfiles                            100%
+  Application.Core.Result<T>                                  100%
+  Application.Core.ValidationBehavior<T1, T2>                   0%
+  Application.Events.Commands.CreateEvent                    97.1%
+  Application.Events.Commands.DeleteEvent                    94.7%
+  Application.Events.Commands.UpdateEvent                    95.2%
+  Application.Events.DTOs.BaseEventDto                        100%
+  Application.Events.DTOs.CreateEventDto                      100%
+  Application.Events.DTOs.EventDetailsDto                     100%
+  Application.Events.DTOs.PricingTierDetailsDto               100%
+  Application.Events.DTOs.PricingTierDto                      100%
+  Application.Events.DTOs.UpdateEventDto                      100%
+  Application.Events.Queries.GetEventDetails                  100%
+  Application.Events.Queries.GetEventList                     100%
+  Application.Events.Validators.BaseEventValidator<T1, T2>    100%
+  Application.Events.Validators.CreateEventValidator          100%
+  Application.Events.Validators.UpdateEventValidator          100%
+  Application.Reports.DTOs.EventSalesReportDto                100%
+  Application.Reports.DTOs.PricingTierSalesDto                100%
+  Application.Reports.Queries.GetAllEventsSalesReport         100%
+  Application.Reports.Queries.GetEventSalesReport             100%
+  Application.Tickets.Commands.PurchaseTicket                  92%
+  Application.Tickets.DTOs.PurchaseTicketDto                  100%
+  Application.Tickets.DTOs.TicketPurchaseResponseDto          100%
+  Application.Tickets.Queries.GetTicketAvailability           100%
+  Application.Tickets.Validators.PurchaseTicketValidator      100%
+
+Domain                                                       96.9%
+  Domain.Event                                                100%
+  Domain.PricingTier                                         88.8%
+  Domain.TicketPurchase                                       100%
+
+Persistence                                                   7.2%
+  Persistence.AppDbContext                                    100%
+  Persistence.EventTicketingSeeder                              0%
+  Persistence.Migrations.AddEventTicketingSystem                0%
+  Persistence.Migrations.AppDbContextModelSnapshot              0%
