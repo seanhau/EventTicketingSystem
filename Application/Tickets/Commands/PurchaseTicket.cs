@@ -71,7 +71,8 @@ public class PurchaseTicket
                 CustomerEmail = request.PurchaseDto.CustomerEmail,
                 Quantity = request.PurchaseDto.Quantity,
                 TotalPrice = totalPrice,
-                ConfirmationCode = confirmationCode
+                ConfirmationCode = confirmationCode,
+                PurchasedAt = DateTime.UtcNow
             };
 
             context.TicketPurchases.Add(ticketPurchase);
