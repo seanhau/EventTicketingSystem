@@ -18,11 +18,8 @@ public class GetEventList
     {
         public async Task<List<EventDetailsDto>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var query = context.Events
-                .Include(e => e.PricingTiers)
-                    .ThenInclude(pt => pt.TicketPurchases)
-                .Include(e => e.TicketPurchases)
-                .AsQueryable();
+            // Build base query with filters
+            var query = context.Events.AsQueryable();
 
             if (!request.IncludePastEvents)
             {
@@ -34,39 +31,38 @@ public class GetEventList
                 query = query.Where(e => !e.IsCancelled);
             }
 
-            // Load all events first
-            var events = await query.ToListAsync(cancellationToken);
-
-            // Sort by date and time in memory (client-side evaluation)
-            // Convert TimeSpan to Ticks for reliable comparison
-            var sortedEvents = events
-                .OrderBy(e => e.Date)
-                .ThenBy(e => e.Time.Ticks)
-                .ThenBy(e => e.Id)
-                .ToList();
-
-            return sortedEvents.Select(e => new EventDetailsDto
-            {
-                Id = e.Id,
-                Name = e.Name,
-                Description = e.Description,
-                Venue = e.Venue,
-                Date = e.Date,
-                Time = e.Time,
-                TotalTicketCapacity = e.TotalTicketCapacity,
-                AvailableTickets = e.AvailableTickets,
-                IsCancelled = e.IsCancelled,
-                CreatedAt = e.CreatedAt,
-                UpdatedAt = e.UpdatedAt,
-                PricingTiers = e.PricingTiers.Select(pt => new PricingTierDetailsDto
+            // Project to DTO with database-side calculation of available tickets
+            // This avoids loading all TicketPurchases into memory
+            var events = await query
+                .Select(e => new EventDetailsDto
                 {
-                    Id = pt.Id,
-                    Name = pt.Name,
-                    Price = pt.Price,
-                    Capacity = pt.Capacity,
-                    AvailableTickets = pt.AvailableTickets
-                }).ToList()
-            }).ToList();
+                    Id = e.Id,
+                    Name = e.Name,
+                    Description = e.Description,
+                    Venue = e.Venue,
+                    Date = e.Date,
+                    Time = e.Time,
+                    TotalTicketCapacity = e.TotalTicketCapacity,
+                    // Calculate available tickets in database
+                    AvailableTickets = e.TotalTicketCapacity - e.TicketPurchases.Sum(tp => tp.Quantity),
+                    IsCancelled = e.IsCancelled,
+                    CreatedAt = e.CreatedAt,
+                    UpdatedAt = e.UpdatedAt,
+                    PricingTiers = e.PricingTiers.Select(pt => new PricingTierDetailsDto
+                    {
+                        Id = pt.Id,
+                        Name = pt.Name,
+                        Price = pt.Price,
+                        Capacity = pt.Capacity,
+                        // Calculate available tickets for each tier in database
+                        AvailableTickets = pt.Capacity - pt.TicketPurchases.Sum(tp => tp.Quantity)
+                    }).ToList()
+                })
+                .OrderBy(e => e.Date)
+                .ThenBy(e => e.Time)
+                .ToListAsync(cancellationToken);
+
+            return events;
         }
     }
 }
