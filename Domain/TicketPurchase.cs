@@ -11,7 +11,7 @@ public class TicketPurchase
     public required string CustomerEmail { get; set; }
     public int Quantity { get; set; }
     public decimal TotalPrice { get; set; }
-    public DateTime PurchasedAt { get; set; } = DateTime.UtcNow;
+    public DateTime PurchasedAt { get; set; }
     public string? ConfirmationCode { get; set; }
 
     // Navigation properties
